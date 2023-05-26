@@ -50,6 +50,7 @@ public class User {
 		this.password = password;
 		this.flag = flag;
 	}
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -9,4 +9,6 @@ import java.util.List;
 public interface CustomerDao {
 
 	public List<Customer> getAllCustomer();
+
+    int insCustomer(Customer customer);
 }
