@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+   
+	<!-- 数据源 -->
+	<bean id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/crmdemo"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+
+	<!-- 配置SqlSessionFactoryBean工厂 -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 主配置文件 -->
+		<property name="configLocation"
+			value="classpath:SqlMapConfig.xml"></property>
+
+		<!-- 加载数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+	<!-- 加载接口的映射文件 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.HG.dao"></property>
+	</bean>
+
+</beans>
